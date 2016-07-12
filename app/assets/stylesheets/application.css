@@ -13,3 +13,34 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .title {
+ 	text-align: center;
+ 	font-family: 'Poiret One', cursive;
+	font-size: 40px;
+ }
+
+ .restaurant-container {
+ 	border: 1px solid black;
+ }
+
+.restaurant-header {
+	font-family: 'Poiret One', cursive;
+	font-size: 32px;
+}
+
+.restaurant-description {
+	font-family: 'Poiret One', cursive;
+	font-size: 16px;
+}
+
+a {
+	text-decoration: none;
+	font-family: 'Poiret One', cursive;
+}
+
+.link {
+	text-align: center;
+	font-size: 32px;
+}
