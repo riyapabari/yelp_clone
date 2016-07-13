@@ -12,7 +12,17 @@
 				<br>
 				<div class='restaurant-description'><%= restaurant.description %></div>
 				<br>
+				<% restaurant.reviews.each do |review| %>
+					<div class='restaurant-review'>
+						<%= review.thoughts %>
+					</div>
+				<% end %>
+				<br>
 				<%= link_to "Edit #{restaurant.name}", edit_restaurant_path(restaurant) %>
+				<br>
+				<%= link_to "Delete #{restaurant.name}", restaurant_path(restaurant), method: :delete %>
+				<br>
+				<%= link_to "Review #{restaurant.name}", new_restaurant_review_path(restaurant) %>
 			</div>
 			<br>
 			<br>

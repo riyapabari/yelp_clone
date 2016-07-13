@@ -33,6 +33,13 @@
 .restaurant-description {
 	font-family: 'Poiret One', cursive;
 	font-size: 16px;
+	font-style: italic;
+}
+
+.restaurant-review {
+	font-family: 'Poiret One', cursive;
+	font-size: 16px;
+	color: red;
 }
 
 a {
