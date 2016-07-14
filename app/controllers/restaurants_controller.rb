@@ -4,6 +4,9 @@ class RestaurantsController < ApplicationController
 
 	def index
 		@restaurants = Restaurant.all
+		# p('==========')
+		# p(current_user)
+		@current_user = current_user
 	end
 
 	def new
@@ -12,8 +15,7 @@ class RestaurantsController < ApplicationController
 
 	def create
 		@restaurant = Restaurant.create_with_user(restaurant_params, current_user)
-		@restaurant.save ? redirect_to(restaurants_path) :	render 'new'
-		end
+		@restaurant.save ? redirect_to(restaurants_path) : render(:new)
 	end
 
 	def show

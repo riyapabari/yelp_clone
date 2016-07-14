@@ -62,11 +62,14 @@ feature 'restaurants' do
 
 	context 'editing restaurants' do
 		before do
-			Restaurant.create(name: 'KFC', description: 'Deep fried goodness')
+			sign_up
+			visit '/restaurants'
+			click_link 'Add a restaurant'
+			fill_in 'Name', with: 'KFC'
+			click_button 'Create Restaurant'
 		end
 
 		scenario 'let a user edit a restaurant' do
-			sign_up	
 			visit '/restaurants'
 			click_link 'Edit KFC'
 			fill_in 'Name', with: 'Kentucky Fried Chicken'
@@ -81,15 +84,32 @@ feature 'restaurants' do
 	context 'deleting restaurants' do
 		before do
 			sign_up
-			Restaurant.create(name: 'KFC', description: 'Deep fried goodness')
+			visit '/restaurants'
+			click_link 'Add a restaurant'
+			fill_in 'Name', with: 'KFC'
+			click_button 'Create Restaurant'
 		end
 
 		scenario 'removes a restaurant when a user clicks a delete link' do
-			visit 'restaurants'
+			visit '/restaurants'
 			click_link 'Delete KFC'
 			expect(page).not_to have_content 'KFC'
 			expect(page).to have_content 'Restaurant deleted successfully'
 		end
+
+		scenario 'users can only edit/delete restaurants they have created' do
+			visit('/')
+			click_link('Sign out')
+			sign_up_user_2
+			expect(page).not_to have_link 'Delete KFC'
+			expect(page).not_to have_link 'Edit KFC'
+		end
 	end
 
 end
+
+
+
+
+
+
